@@ -90,6 +90,9 @@ def main():
 
             row = {
                 "image_index": index,
+                "loaded_sample_index": extract(
+                    r"Sample index:\s*(\d+)", text, int,
+                ),
                 "capacity_bits": extract(
                     r"Reserved Room Length\s*\(l_tau\)\s*:\s*(\d+)",
                     text, int,
@@ -119,13 +122,27 @@ def main():
 
             # Detect an experiment that ran but did not print expected results.
             required = [
-                "capacity_bits", "payload_bits",
-                "metadata_recovered", "pixel_perfect",
-                "restoration_mse",
+                "loaded_sample_index", "capacity_bits", "payload_bits",
+                "embedding_rate_bpp", "metadata_recovered",
+                "pixel_perfect", "restoration_mse",
             ]
             missing = [key for key in required if row[key] is None]
+
             if missing:
                 row["status"] = "missing outputs: " + ", ".join(missing)
+            elif row["loaded_sample_index"] != index:
+                row["status"] = (
+                    f"wrong sample loaded: expected {index}, "
+                    f"got {row['loaded_sample_index']}"
+                )
+            elif (
+                row["metadata_recovered"] != "True"
+                or row["pixel_perfect"] != "True"
+                or row["restoration_mse"] != 0.0
+            ):
+                row["status"] = "verification failed"
+            else:
+                row["status"] = "completed"
 
             print(row)
             rows.append(row)
@@ -134,6 +151,7 @@ def main():
             print(f"FAILED for image {index}: {error}")
             rows.append({
                 "image_index": index,
+                "loaded_sample_index": None,
                 "capacity_bits": None,
                 "payload_bits": None,
                 "embedding_rate_bpp": None,
