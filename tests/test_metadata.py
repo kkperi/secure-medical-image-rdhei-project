@@ -1,5 +1,5 @@
 
-from src.medsteg.metadata import (
+from medsteg.metadata import (
     validate_metadata,
     serialize_metadata,
 )

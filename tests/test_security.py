@@ -2,7 +2,7 @@
 import pytest
 from cryptography.exceptions import InvalidTag
 
-from src.medsteg.security import (
+from medsteg.security import (
     generate_key,
     encrypt_metadata,
     decrypt_metadata,
