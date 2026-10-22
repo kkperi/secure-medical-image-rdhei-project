@@ -1,0 +1,6 @@
+image_index,capacity_bits,payload_bits,embedding_rate_bpp,metadata_recovered,pixel_perfect,restoration_mse,status
+0,1489834,912,0.003479,True,True,0.0,completed
+1,1489834,912,0.003479,True,True,0.0,completed
+2,1489834,912,0.003479,True,True,0.0,completed
+3,1489834,912,0.003479,True,True,0.0,completed
+4,1489834,912,0.003479,True,True,0.0,completed
