@@ -26,3 +26,7 @@ RDHEMI.backup.ipynb
 *.egg-info/
 build/
 dist/
+
+myenv/
+.venv/
+RDHEMI_backup.ipynb
