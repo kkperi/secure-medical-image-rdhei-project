@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local datasets and experiment outputs
+data/
+results/
+
+# Secrets and local environment variables
+.env
+*.key
+RDHEMI.backup.ipynb
+
+# Generated Python package metadata
+*.egg-info/
+build/
+dist/
