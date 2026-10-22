@@ -11,6 +11,22 @@ dependencies = [
     "cryptography",
 ]
 
+[project.optional-dependencies]
+notebook = [
+    "numpy",
+    "opencv-python",
+    "matplotlib",
+    "pycryptodome",
+    "medmnist",
+    "jupyter",
+    "ipykernel",
+    "nbclient",
+    "nbformat",
+]
+dev = [
+    "pytest",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
